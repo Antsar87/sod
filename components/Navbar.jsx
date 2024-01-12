@@ -3,12 +3,12 @@ import logo from '@/assets/logo/logo.png';
 import Link from 'next/link';
 
 const links = [
-  { label: 'sod', href: 'sod' },
-  { label: 'about', href: 'about' },
-  { label: 'videos', href: 'videos' },
-  { label: 'my account', href: 'myAccount' },
-  { label: 'cart', href: 'cart' },
-  { label: 'need Help?', href: 'needhelp' },
+  { label: 'sod', href: '/sod' },
+  { label: 'about', href: '/about' },
+  { label: 'videos', href: '/videos' },
+  { label: 'my account', href: '/myAccount' },
+  { label: 'cart', href: '/cart' },
+  { label: 'need Help?', href: '/needhelp' },
 ];
 
 const Navbar = () => {
