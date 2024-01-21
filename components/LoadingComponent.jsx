@@ -1,12 +1,20 @@
-import React from 'react';
+'use client';
+import { useFormStatus } from 'react-dom';
 
-const LoadingComponent = ({ text = 'Submit', isLoading }) => {
-  return isLoading ? (
-    <>
-      <span className="loading"></span>
-    </>
-  ) : (
-    text
+const LoadingComponent = ({ text = 'Submit', className }) => {
+  const { pending } = useFormStatus();
+
+  console.log(pending)
+  return (
+    <button className={className} disabled={pending}>
+      {pending ? (
+        <>
+          <span className="loading"></span>
+        </>
+      ) : (
+        text
+      )}
+    </button>
   );
 };
 

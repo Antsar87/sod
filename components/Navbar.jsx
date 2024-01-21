@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import logo from '@/assets/logo/logo.png';
 import Link from 'next/link';
+import AdminAction from './AdminAction';
 
 const links = [
   { label: 'sod', href: '/sod' },
@@ -16,16 +17,24 @@ const Navbar = () => {
     <nav>
       <div className="text-center">
         <Link href="/" className="inline-block">
-          <Image width={400} src={logo} priority alt='sodinstalled.com'/>
+          <Image width={400} src={logo} priority alt="sodinstalled.com" />
         </Link>
       </div>
 
       <ul className="flex flex-col md:flex-row justify-center gap-5 bg-blue-700 text-white py-5">
-        {links.map((item) => (
-          <Link href={item.href} key={item.label} className="uppercase text-xl">
-            {item.label}
-          </Link>
+        {links.map((item, idx) => (
+          <li key={idx}>
+            <Link
+              href={item.href}
+              key={item.label}
+              className="uppercase text-xl"
+            >
+              {item.label}
+            </Link>
+          </li>
         ))}
+
+        <AdminAction />
       </ul>
     </nav>
   );
