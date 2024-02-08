@@ -18,6 +18,7 @@ const CellCustom = ({ info }) => {
     try {
       const { data } = await axios.delete(`/sods/${rowData._id}`);
       await revalidate('/admin/sodmanagement');
+      await revalidate('/sods');
       toast.success(data.message);
     } catch (error) {
       toast.error(getError(error));

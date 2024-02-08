@@ -38,7 +38,7 @@ const CalculateForm = ({ id }) => {
           type="number"
           placeholder="4500"
           min={0}
-          className="input w-full max-w-40 bg-transparent text-black border-black placeholder:text-black"
+          className="input w-full max-w-40 bg-transparent text-black border-black placeholder:text-black placeholder:opacity-25"
           required
         />
 
@@ -55,7 +55,7 @@ const CalculateForm = ({ id }) => {
       <div className="flex flex-col justify-between mb-5 max-w-md">
         <span className="font-bold text-2xl">
           <span className="block text-lg">Total</span>
-          {price?.toFixed(2)}$
+          ${price?.toFixed(2)}
         </span>
 
         <VerifyModal />

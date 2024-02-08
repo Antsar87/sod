@@ -27,17 +27,25 @@ const sodsPage = async () => {
                   'https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg'
                 }
                 alt="Shoes"
-                height={100}
+                height={300}
                 decoding="async"
                 loading="lazy"
-                className="h-40 w-full object-cover"
+                className="w-full object-cover"
+                style={{ height: '300px' }}
               />
             </figure>
-            <div className="card-body px-5 py-3">
-              <h2 className="card-title">{item.name}</h2>
-              <p>{item.description}</p>
+            <div className="px-5 py-3">
+              <h2 className="card-title text-2xl">{item.name}</h2>
+              <p>
+                <span className="">Supplier:</span> {item?.providerInfo?.name}
+              </p>
+              <p className="mb-3">
+                {item?.providerInfo?.squareFeetInPallet} sqft of sod per pallet
+              </p>
 
-              <div className="flex gap-3 mb-5">
+              <p className='mb-3'>{item.description}</p>
+
+              {/* <div className="flex gap-3 mb-5">
                 <input
                   type="number"
                   placeholder="Qty"
@@ -48,7 +56,7 @@ const sodsPage = async () => {
                 <button className="btn bg-transparent text-black text-base">
                   Add Cart
                 </button>
-              </div>
+              </div> */}
 
               <div className="card-actions">
                 <Link
