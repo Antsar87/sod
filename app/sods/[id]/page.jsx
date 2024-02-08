@@ -1,4 +1,7 @@
-import React from 'react';
+import CalculateForm from '@/components/CalculateForm';
+import CaruselComponent from '@/components/CaruselComponent';
+import DepositModal from '@/components/DepositModal';
+import VerifyModal from '@/components/VerifyModal';
 
 export async function generateStaticParams() {
   const sods = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/sods`);
@@ -8,10 +11,13 @@ export async function generateStaticParams() {
 }
 
 const sod = async (id) => {
-  const sod = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/sods/${id}`);
-  const sodJson = await sod.json();
-
-  return sodJson;
+  try {
+    const sod = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/sods/${id}`);
+    const sodJson = await sod.json();
+    return sodJson;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const SinglePage = async ({ params }) => {
@@ -21,38 +27,44 @@ const SinglePage = async ({ params }) => {
 
   return (
     <div className="grid md:grid-cols-2 gap-5">
-      <figure>
-        <img
+      <figure className='relative min-h-[25rem]'>
+        {/* <img
           src={data.image[0].cloudinary_url}
           alt={data.name}
           loading="lazy"
-        />
+        /> */}
+        <CaruselComponent data={data.image} />
       </figure>
 
       <article>
-        <h2 className="text-3xl capitalize font-bold mb-3">{data.name}</h2>
+        <h2 className="text-4xl capitalize font-bold mb-1">{data.name}</h2>
 
-        <h3 className="text-2xl mb-5">
-          Enter number of pallets for pricing{' '}
-          <span className="text-base block">
-            500 sqft of sod per pallet Description
-          </span>
-        </h3>
+        <h3 className="text-xl mb-5">Insert sq ft needed</h3>
 
-        <p className='mb-5'>{data.description}</p>
+        <CalculateForm id={data._id} />
 
-        <div className="flex gap-3 mb-5">
-          <input
-            type="number"
-            placeholder="Qty"
-            min={0}
-            className="input w-full max-w-20 bg-transparent text-black border-black placeholder:text-black"
-          />
+        <div className="mb-5">
+          <p className="mb-5 font-bold">
+            Price inclues Delivery and Installation
+          </p>
 
-          <button className="btn bg-transparent text-black text-base border-black">
-            Add Cart
+          <p className="mb-5">{data.description}</p>
+
+          <button className="btn border-0 rounded-sm shadow-md shadow-gray-600 bg-blue-500">
+            Read More
           </button>
         </div>
+
+        <p>
+          Don't know how to measure sq ft?{' '}
+          <a
+            href="https://www.saratogasod.com/tips-resources/sod-calculator/"
+            target="_blank"
+            className="underline text-blue-400"
+          >
+            Click here
+          </a>
+        </p>
       </article>
     </div>
   );

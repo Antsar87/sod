@@ -38,3 +38,13 @@ html {
 .form-content {
   form-sizing: content;
 }
+
+/* Clase para ocultar todos los scrollbars */
+.hidde-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.hidde-scrollbar::-webkit-scrollbar {
+  display: none; /* WebKit (Chrome, Safari, etc.) */
+}

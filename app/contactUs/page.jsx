@@ -8,7 +8,6 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 
 const ContactUs = () => {
-  const [loading, setLoading] = useState(false);
   const params = useSearchParams();
   const zipcode = params.get('zipcode');
 
@@ -19,7 +18,6 @@ const ContactUs = () => {
   }
 
   const handleSubmit = async (FormData) => {
-    setLoading(true);
     const dataForm = {
       name: FormData.get('name'),
       address: FormData.get('address'),
@@ -36,8 +34,6 @@ const ContactUs = () => {
       console.log(data);
     } catch (error) {
       toast.error(getError(error));
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -109,10 +105,7 @@ const ContactUs = () => {
             placeholder="email"
           />
 
-          <button className="btn w-full" disabled={loading}>
-            {' '}
-            <LoadingComponent isLoading={loading} text="Get in touch" />
-          </button>
+          <LoadingComponent className="btn w-full" text="Get in touch" />
         </form>
       </div>
     </main>

@@ -1,6 +1,6 @@
 import { Inter } from 'next/font/google';
-import './globals.css';
 import { UserProvider } from '@/context';
+import './globals.css';
 
 import Navbar from '@/components/Navbar';
 import 'react-toastify/dist/ReactToastify.css';
@@ -17,6 +17,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`pb-10 ${inter.className}`}>
+        {/* <script src="https://js.stripe.com/v3/"></script> */}
         <UserProvider>
           <Navbar />
           {children}

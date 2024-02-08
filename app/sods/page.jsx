@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 
 const fetchingData = async () => {
@@ -11,7 +10,7 @@ const fetchingData = async () => {
 const sodsPage = async () => {
   const data = await fetchingData();
 
-  console.log(data);
+  console.log(data.length);
 
   return (
     <>
@@ -24,7 +23,7 @@ const sodsPage = async () => {
             <figure>
               <img
                 src={
-                  item.image[0].cloudinary_url ||
+                  item.image[0]?.cloudinary_url ||
                   'https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg'
                 }
                 alt="Shoes"
